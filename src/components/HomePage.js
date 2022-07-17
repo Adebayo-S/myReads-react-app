@@ -6,6 +6,7 @@ class HomePage extends React.Component {
 
     static propTypes = {
         books: PropTypes.array.isRequired,
+        moveBook: PropTypes.func.isRequired
     }
 
     render() {
@@ -25,7 +26,7 @@ class HomePage extends React.Component {
                             book => <Book
                                         book={book}
                                         key={book.id}
-                                        onChange={this.moveBook} />
+                                        onMove={this.props.moveBook} />
                             )}
                         </ol>
                     </div>
@@ -36,9 +37,10 @@ class HomePage extends React.Component {
                         <ol className="books-grid">
                         {this.props.books.filter(
                             book => book.shelf === 'wantToRead').map(
-                            book => <Book book={book} key={book.id}>
-                                <button onClick={() => this.moveBook(book, 'wantToRead')}>Move to another shelf</button>
-                            </Book>
+                            book => <Book
+                                        book={book}
+                                        key={book.id}
+                                        onMove={this.props.moveBook} />
                             )}
                         </ol>
                     </div>
@@ -49,9 +51,10 @@ class HomePage extends React.Component {
                         <ol className="books-grid">
                         {this.props.books.filter(
                             book => book.shelf === 'read').map(
-                            book => <Book book={book} key={book.id}>
-                                <button onClick={() => this.moveBook(book, 'read')}>Move to another shelf</button>
-                            </Book>
+                            book => <Book
+                                        book={book}
+                                        key={book.id}
+                                        onMove={this.props.moveBook} />
                             )}
                         </ol>
                     </div>
@@ -59,7 +62,7 @@ class HomePage extends React.Component {
                 </div>
                 </div>
                 <div className="open-search">
-                <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+                    <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
                 </div>
             </div>
         )
