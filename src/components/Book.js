@@ -4,20 +4,19 @@ import PropTypes from 'prop-types'
 // backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
 
 class Book extends React.Component {
-
   static propTypes = {
     book: PropTypes.object.isRequired,
-    onMove: PropTypes.func.isRequired
+    onMove: PropTypes.func.isRequired,
   }
 
   state = {
-    shelf: 'none'
+    shelf: this.props.book.shelf,
   }
 
   moveBook = (event) => {
-    this.props.book.shelf = event.target.value;
-    this.props.onMove(this.props.book);
-    this.setState({ shelf: event.target.value });
+    this.props.book.shelf = event.target.value
+    this.props.onMove(this.props.book)
+    this.setState({ shelf: event.target.value })
   }
 
   render() {
@@ -34,8 +33,10 @@ class Book extends React.Component {
               }}
             ></div>
             <div className="book-shelf-changer">
-              <select value={this.state.shelf} onChange={
-                (event) => this.moveBook(event)}>
+              <select
+                value={this.state.shelf}
+                onChange={(event) => this.moveBook(event)}
+              >
                 <option value="move" disabled>
                   Move to...
                 </option>

@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import Book from './Book'
+import { Link } from 'react-router-dom'
 
 class Search extends React.Component {
 
     static propTypes = {
         books: PropTypes.array.isRequired,
-        onMove: PropTypes.func.isRequired
+        moveBook: PropTypes.func.isRequired
     }
 
     state = {
@@ -18,7 +19,7 @@ class Search extends React.Component {
     }
 
     render() {
-        const { books, onMove } = this.props
+        const { books, moveBook } = this.props
         const { query } = this.state
         const filteredBooks = books.filter(
             book => book.title.toLowerCase().includes(query.toLowerCase())
@@ -26,7 +27,7 @@ class Search extends React.Component {
         return (
             <div className="search-books">
                 <div className="search-books-bar">
-                    <a className="close-search" href="#">Close</a>
+                    <Link className="close-search" to="/">Close</Link>
                     <div className="search-books-input-wrapper">
                         <input
                         type="text"
@@ -42,7 +43,7 @@ class Search extends React.Component {
                         <Book
                             book={book}
                             key={book.id}
-                            onMove={onMove}
+                            onMove={moveBook}
                         />
                         ))}
                     </ol>
