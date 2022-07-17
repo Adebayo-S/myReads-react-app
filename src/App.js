@@ -1,8 +1,8 @@
 import React from 'react'
 import * as BooksAPI from './BooksAPI'
-import { Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import './App.css'
-import Book from './Book'
+import HomePage from './components/HomePage'
 
 class BooksApp extends React.Component {
   state = {
@@ -18,8 +18,17 @@ class BooksApp extends React.Component {
 
   componentDidMount() {
     BooksAPI.getAll().then(books => {
-      this.setState({ books: books })
+      this.setState({ books })
     })
+  }
+
+  moveBook = (book) => {
+    BooksAPI.update(book, book.shelf).then(() => {
+      this.setState(state => {
+        const books = state.books.filter(b => b.id !== book.id)
+        return { books: books }
+      })}
+    ).catch(err => console.log(err))
   }
 
   render() {
@@ -47,57 +56,9 @@ class BooksApp extends React.Component {
             </div>
           </div>
         ) : (
-          <div className="list-books">
-            <div className="list-books-title">
-              <h1>MyReads</h1>
-            </div>
-            <div className="list-books-content">
-              <div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Currently Reading</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {this.state.books.filter(
-                        book => book.shelf === 'currentlyReading').map(
-                          book => <Book book={book} key={book.id}>
-                            <button onClick={() => this.moveBook(book, 'currentlyReading')}>Move to another shelf</button>
-                          </Book>
-                        )}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Want to Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {this.state.books.filter(
-                        book => book.shelf === 'wantToRead').map(
-                          book => <Book book={book} key={book.id}>
-                            <button onClick={() => this.moveBook(book, 'wantToRead')}>Move to another shelf</button>
-                          </Book>
-                        )}
-                    </ol>
-                  </div>
-                </div>
-                <div className="bookshelf">
-                  <h2 className="bookshelf-title">Read</h2>
-                  <div className="bookshelf-books">
-                    <ol className="books-grid">
-                      {this.state.books.filter(
-                        book => book.shelf === 'read').map(
-                          book => <Book book={book} key={book.id}>
-                            <button onClick={() => this.moveBook(book, 'read')}>Move to another shelf</button>
-                          </Book>
-                        )}
-                    </ol>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
-            </div>
-          </div>
+          <Route exact path="/" render={() => (
+            <HomePage books={this.state.books} moveBook={this.moveBook} />
+          )} />
         )}
       </div>
     )
