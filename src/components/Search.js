@@ -17,28 +17,6 @@ class Search extends React.Component {
         errMsg: ''
     }
 
-    // handleQuery = async (query) => {
-    //     this.setState({ query: query });
-
-    //     await BooksAPI.search(this.state.query).then((data) => {
-    //         if (data && !data.error) {
-    //             let foundBooks = data.map(foundBook => {
-    //                 this.props.books.map(book => {
-    //                     if (book.id === foundBook.id) {
-    //                         foundBook.shelf = book.shelf;
-    //                     }
-    //                 })
-    //                 return foundBook;
-    //             })
-    //             this.setState({ searchedBooks: foundBooks });
-    //         } else {
-    //             const errMsg = `"${this.state.query}" could not be found in the library.
-    //                 Please try again with a different query.`;
-    //             this.setState({ searchedBooks: [], errMsg: errMsg });
-    //         }
-    //     });
-    // }
-
     handleQuery = async (query) => {
         this.setState({ query: query });
 
@@ -63,7 +41,7 @@ class Search extends React.Component {
     }
 
     render() {
-        const { books, moveBook } = this.props
+        const { moveBook } = this.props
         const { query } = this.state
 
 
