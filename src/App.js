@@ -17,10 +17,10 @@ class BooksApp extends React.Component {
     })
   }
 
-  moveBook = (book) => {
-    BooksAPI.update(book, book.shelf).then(() => {
-      this.setState(state => {
-        const books = state.books.filter(b => b.id !== book.id)
+  moveBook = (book, shelf) => {
+    BooksAPI.update(book, shelf).then(async () => {
+      const books = await BooksAPI.getAll()
+      this.setState(() => {
         return { books: books }
       })}
     ).catch(err => console.log(err))

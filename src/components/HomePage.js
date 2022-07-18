@@ -27,7 +27,7 @@ class HomePage extends React.Component {
                       <Book
                         book={book}
                         key={book.id}
-                        onMove={this.props.moveBook}
+                        moveBook={this.props.moveBook}
                       />
                     ))}
                 </ol>
@@ -43,7 +43,7 @@ class HomePage extends React.Component {
                       <Book
                         book={book}
                         key={book.id}
-                        onMove={this.props.moveBook}
+                        moveBook={this.props.moveBook}
                       />
                     ))}
                 </ol>
@@ -59,7 +59,7 @@ class HomePage extends React.Component {
                       <Book
                         book={book}
                         key={book.id}
-                        onMove={this.props.moveBook}
+                        moveBook={this.props.moveBook}
                       />
                     ))}
                 </ol>

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import Book from './Book'
 import { Link } from 'react-router-dom'
+import * as BooksAPI from '../BooksAPI'
 
 class Search extends React.Component {
 
@@ -11,19 +12,38 @@ class Search extends React.Component {
     }
 
     state = {
-        query: ''
+        query: '',
+        searchedBooks: [],
+        errMsg: ''
     }
 
-    updateQuery = (event) => {
-        this.setState({ query: event.target.value })
+    handleQuery = async (query) => {
+        this.setState({ query: query });
+
+        await BooksAPI.search(this.state.query).then((data) => {
+            if (data && !data.error) {
+                let foundBooks = data.map(foundBook => {
+                    this.props.books.map(book => {
+                        if (book.id === foundBook.id) {
+                            foundBook.shelf = book.shelf;
+                        }
+                    })
+                    return foundBook;
+                })
+                this.setState({ searchedBooks: foundBooks });
+            } else {
+                const errMsg = `"${this.state.query}" could not be found in the library.
+                    Please try again with a different query.`;
+                this.setState({ searchedBooks: [], errMsg: errMsg });
+            }
+        });
     }
 
     render() {
         const { books, moveBook } = this.props
         const { query } = this.state
-        const filteredBooks = books.filter(
-            book => book.title.toLowerCase().includes(query.toLowerCase())
-        )
+
+
         return (
             <div className="search-books">
                 <div className="search-books-bar">
@@ -33,19 +53,21 @@ class Search extends React.Component {
                         type="text"
                         placeholder="Search by title or author"
                         value={query}
-                        onChange={this.updateQuery}
+                        onChange={(e) => this.handleQuery(e.target.value)}
                         />
                     </div>
                 </div>
                 <div className="search-books-results">
                     <ol className="books-grid">
-                        {filteredBooks.map(book => (
-                        <Book
-                            book={book}
-                            key={book.id}
-                            onMove={moveBook}
-                        />
-                        ))}
+                        {this.state.searchedBooks.length > 0
+                            ? this.state.searchedBooks.map(book => (
+                                <Book
+                                    book={book}
+                                    key={book.id}
+                                    moveBook={moveBook}
+                                />))
+                            : <li>{this.state.errMsg}</li>
+                        }
                     </ol>
                 </div>
             </div>

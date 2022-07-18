@@ -3,25 +3,12 @@ import PropTypes from 'prop-types'
 
 // backgroundImage: 'url("http://books.google.com/books/content?id=PGR2AwAAQBAJ&printsec=frontcover&img=1&zoom=1&imgtk=AFLRE73-GnPVEyb7MOCxDzOYF1PTQRuf6nCss9LMNOSWBpxBrz8Pm2_mFtWMMg_Y1dx92HT7cUoQBeSWjs3oEztBVhUeDFQX6-tWlWz1-feexS0mlJPjotcwFqAg6hBYDXuK_bkyHD-y&source=gbs_api")'
 
-class Book extends React.Component {
-  static propTypes = {
-    book: PropTypes.object.isRequired,
-    onMove: PropTypes.func.isRequired,
-  }
+const Book = (props) => {
 
-  state = {
-    shelf: this.props.book.shelf,
-  }
+  const { book, moveBook } = props;
 
-  moveBook = (event) => {
-    this.props.book.shelf = event.target.value
-    this.props.onMove(this.props.book)
-    this.setState({ shelf: event.target.value })
-  }
-
-  render() {
-    return (
-      <li>
+  return (
+    <li>
         <div className="book">
           <div className="book-top">
             <div
@@ -29,17 +16,17 @@ class Book extends React.Component {
               style={{
                 width: 128,
                 height: 193,
-                backgroundImage: `url(${this.props.book.imageLinks.thumbnail})`,
+                backgroundImage: book.imageLinks
+                  ? `url(${book.imageLinks.thumbnail})`
+                  : ""
               }}
             ></div>
             <div className="book-shelf-changer">
               <select
-                value={this.state.shelf}
-                onChange={(event) => this.moveBook(event)}
+                value={book.shelf ? book.shelf : 'none'}
+                onChange={(e) => moveBook(book, e.target.value)}
               >
-                <option value="move" disabled>
-                  Move to...
-                </option>
+                <option value="move" disabled>Move to...</option>
                 <option value="currentlyReading">Currently Reading</option>
                 <option value="wantToRead">Want to Read</option>
                 <option value="read">Read</option>
@@ -47,16 +34,22 @@ class Book extends React.Component {
               </select>
             </div>
           </div>
-          <div className="book-title">{this.props.book.title}</div>
+          <div className="book-title">{book.title}</div>
           <div className="book-authors">
-            {this.props.book.authors.map((author) => {
+            {/* {book.authors.map((author) => {
               return <span key={author}>{author}</span>
-            })}
+            })} */
+            book.authors}
           </div>
         </div>
       </li>
-    )
-  }
+  )
 }
+
+Book.propTypes = {
+  book: PropTypes.object.isRequired,
+  moveBook: PropTypes.func.isRequired,
+}
+
 
 export default Book
