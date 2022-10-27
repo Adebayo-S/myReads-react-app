@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/Adebayo-S/myReads-react-app/precache-manifest.31dc48fe0f3eac6a18c85d6f4f2c81c9.js"
+  "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/precache-manifest.389bf21c97238a75a2e05c79fc252b1c.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/Adebayo-S/myReads-react-app/index.html", {
+workbox.routing.registerNavigationRoute("%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/index.html", {
   
   blacklist: [/^\/_/,/\/[^/]+\.[^/]+$/],
 });

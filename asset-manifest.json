@@ -1,14 +1,14 @@
 {
-  "main.css": "/Adebayo-S/myReads-react-app/static/css/main.ab8bfb5b.chunk.css",
-  "main.js": "/Adebayo-S/myReads-react-app/static/js/main.1cb4df75.chunk.js",
-  "main.js.map": "/Adebayo-S/myReads-react-app/static/js/main.1cb4df75.chunk.js.map",
-  "static/js/1.c9bc8df1.chunk.js": "/Adebayo-S/myReads-react-app/static/js/1.c9bc8df1.chunk.js",
-  "static/js/1.c9bc8df1.chunk.js.map": "/Adebayo-S/myReads-react-app/static/js/1.c9bc8df1.chunk.js.map",
-  "runtime~main.js": "/Adebayo-S/myReads-react-app/static/js/runtime~main.78059671.js",
-  "runtime~main.js.map": "/Adebayo-S/myReads-react-app/static/js/runtime~main.78059671.js.map",
-  "static/media/App.css": "/Adebayo-S/myReads-react-app/static/media/add.75d390e5.svg",
-  "static/css/main.ab8bfb5b.chunk.css.map": "/Adebayo-S/myReads-react-app/static/css/main.ab8bfb5b.chunk.css.map",
-  "index.html": "/Adebayo-S/myReads-react-app/index.html",
-  "precache-manifest.31dc48fe0f3eac6a18c85d6f4f2c81c9.js": "/Adebayo-S/myReads-react-app/precache-manifest.31dc48fe0f3eac6a18c85d6f4f2c81c9.js",
-  "service-worker.js": "/Adebayo-S/myReads-react-app/service-worker.js"
+  "main.css": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/css/main.9b740e7b.chunk.css",
+  "main.js": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/main.4158a7e1.chunk.js",
+  "main.js.map": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/main.4158a7e1.chunk.js.map",
+  "static/js/1.c9bc8df1.chunk.js": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/1.c9bc8df1.chunk.js",
+  "static/js/1.c9bc8df1.chunk.js.map": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/1.c9bc8df1.chunk.js.map",
+  "runtime~main.js": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/runtime~main.694c81d4.js",
+  "runtime~main.js.map": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/js/runtime~main.694c81d4.js.map",
+  "static/media/App.css": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/media/arrow-drop-down.9d4e3f36.svg",
+  "static/css/main.9b740e7b.chunk.css.map": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/static/css/main.9b740e7b.chunk.css.map",
+  "index.html": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/index.html",
+  "precache-manifest.389bf21c97238a75a2e05c79fc252b1c.js": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/precache-manifest.389bf21c97238a75a2e05c79fc252b1c.js",
+  "service-worker.js": "%7BAdebayo-S%7D.github.io/%7BmyReads-react-app%7D/service-worker.js"
 }
